@@ -12,38 +12,43 @@ h3. Installation
 
 To install SegmentSpy onto your node, run <code>bin/plugin -install polyfractal/elasticsearch-inquisitor</code>
 
-SegmentSpy automatically connects to <code>localhost</code>, so it must be run on a node that is web-accessible.  To access Inquisitor, open <code>http://localhost:9200/_plugin/inquisitor/</code>
+Inquisitor automatically connects to <code>localhost</code>, so it must be run on a node that is web-accessible.  To access Inquisitor, open <code>http://localhost:9200/_plugin/inquisitor/</code>
 
 
-h3. Query Tab
+h3. Features
 
-Inquisitor's "Query" tab allows you to search your index/type with arbitrary queries.  The output is designed to help understand and debug queries, whether it is fixing JSON errors or trying to decide why certain results are returned.
-
-* Inquisitor automatically discovers your indices, types and mappings.  Simply select the index and type you wish to query
+h4. Discovery
+Inquisitor automatically discovers your indices, types and mappings.  Simply select the index and type you wish to query
 
 !indices.png!
 
-* Inquisitor parses your JSON query as you type.  If the JSON is valid, it prints a nicely formatted version for reference.  If there is an error, Inquisitor uses JSONLint to help identify the error.
+h4. JSON Parsing and Formatting
+Inquisitor parses your JSON query as you type.  If the JSON is valid, it prints a nicely formatted version for reference.  If there is an error, Inquisitor uses JSONLint to help identify the error.
 
 !json.png!
 
-* Error messages from ElasticSearch are often large, nested blocks of text mixed with mangled JSON.  Inquisitor parses the error and re-formats it into a table, allowing you to quickly identify the problem with your query.
+h4. Pretty Errors
+Error messages from ElasticSearch are often large, nested blocks of text mixed with mangled JSON.  Inquisitor parses the error and re-formats it into a table, allowing you to quickly identify the problem with your query.
 
 !errors.png!
 
-* Inquisitor attempts to autodetect fields in your query that match properties in your type's mapping.  If a property is autodetected, highlighting is automatically enabled in the results.
+h4. Automatic Highlighting
+Inquisitor attempts to autodetect fields in your query that match properties in your type's mapping.  If a property is autodetected, highlighting is automatically enabled in the results.
 
 !highlighting.png!
 
-* Search results are presented in a formatted table.  Relevance scores and document IDs are displayed in the top-left corner of each result.  In the top-right corner, Inquisitor gives you the ability to dive into the result's scoring using ElasticSearch's Explain API..  If highlighting is enabled, highlighted fragments be marked with yellow backgrounds.  The full document source is shown below the fragments.
+h4. Formatted Search Results
+Search results are presented in a formatted table.  Relevance scores and document IDs are displayed in the top-left corner of each result.  In the top-right corner, Inquisitor gives you the ability to dive into the result's scoring using ElasticSearch's Explain API..  If highlighting is enabled, highlighted fragments be marked with yellow backgrounds.  The full document source is shown below the fragments.
 
 !result.png!
 
-* In addition to query results, Inquisitor has a tab that analyzes arbitrary text using ElasticSearch's built-in analyzers.  Custom analyzers will be supported soon.
+h4. Analyzer testing
+In addition to query results, Inquisitor has a tab that analyzes arbitrary text using ElasticSearch's built-in analyzers.  Custom analyzers will be supported soon.
 
-!anlyzers.png!
+!analyzers.png!
 
-* Simlar to the Analyzer tab, Inquisitor also has a Tokenizer tab which analyzes arbitrary text with various tokenizers. 
+h4. Tokenizer testing
+Simlar to the Analyzer tab, Inquisitor also has a Tokenizer tab which analyzes arbitrary text with various tokenizers. 
 
 !tokenizers.png! 
 
