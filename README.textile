@@ -60,7 +60,7 @@ Simlar to the Analyzer tab, Inquisitor also has a Tokenizer tab which analyzes a
 !tokenizers.png! 
 
 
-h3. Background Information
+h2. Background Information
 
 This plugin was written because "_Why didn't my query return the correct results?_" questions are extremely prevalent.  They are also difficult for third-parties to help diagnose without a full recreation of the search environment.
 
@@ -68,7 +68,7 @@ I'm hoping that Inquisitor helps people diagnose their query problems without ne
 
 Inquisitor was written in AngularJS.  This is my first project in AngularJS, so if you are reading the code...be kind!  I basically have no idea what I'm doing in Angular =)
 
-h3. Roadmap
+h2. Roadmap
 * Fully integrate the Explain API once it supports POST requests
 * Nested and Parent/Child support
 * Load custom analyzers
