@@ -1,5 +1,5 @@
 #editor related
-.idea/
+_site/.idea/*
 .idea/*
 
 # OS generated files
