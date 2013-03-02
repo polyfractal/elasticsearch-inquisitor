@@ -2,7 +2,7 @@ h1. elasticsearch-inquisitor
 
 Inquisitor is a tool help understand and debug your queries in ElasticSearch.
 
-|_. elasticsearch-segmentspy |_. ElasticSearch |
+|_. elasticsearch-inquisitor |_. ElasticSearch |
 | master | 0.19.0.RC1 -> 0.20.6 |
 | v0.1.* | 0.19.0.RC1 -> 0.20.6 |
 
