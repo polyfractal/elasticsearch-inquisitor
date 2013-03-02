@@ -18,36 +18,43 @@ Inquisitor automatically connects to <code>localhost</code>, so it must be run o
 h3. Features
 
 h4. Discovery
+
 Inquisitor automatically discovers your indices, types and mappings.  Simply select the index and type you wish to query
 
 !indices.png!
 
 h4. JSON Parsing and Formatting
+
 Inquisitor parses your JSON query as you type.  If the JSON is valid, it prints a nicely formatted version for reference.  If there is an error, Inquisitor uses JSONLint to help identify the error.
 
 !json.png!
 
 h4. Pretty Errors
+
 Error messages from ElasticSearch are often large, nested blocks of text mixed with mangled JSON.  Inquisitor parses the error and re-formats it into a table, allowing you to quickly identify the problem with your query.
 
 !errors.png!
 
 h4. Automatic Highlighting
+
 Inquisitor attempts to autodetect fields in your query that match properties in your type's mapping.  If a property is autodetected, highlighting is automatically enabled in the results.
 
 !highlighting.png!
 
 h4. Formatted Search Results
+
 Search results are presented in a formatted table.  Relevance scores and document IDs are displayed in the top-left corner of each result.  In the top-right corner, Inquisitor gives you the ability to dive into the result's scoring using ElasticSearch's Explain API..  If highlighting is enabled, highlighted fragments be marked with yellow backgrounds.  The full document source is shown below the fragments.
 
 !result.png!
 
 h4. Analyzer testing
+
 In addition to query results, Inquisitor has a tab that analyzes arbitrary text using ElasticSearch's built-in analyzers.  Custom analyzers will be supported soon.
 
 !analyzers.png!
 
 h4. Tokenizer testing
+
 Simlar to the Analyzer tab, Inquisitor also has a Tokenizer tab which analyzes arbitrary text with various tokenizers. 
 
 !tokenizers.png! 
