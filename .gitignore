@@ -1,5 +1,6 @@
 #editor related
-.idea
+/*/.idea/*
+/*/.idea
 
 # OS generated files
 .DS_Store
