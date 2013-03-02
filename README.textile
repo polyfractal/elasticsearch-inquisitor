@@ -10,7 +10,7 @@ Inquisitor is a tool help understand and debug your queries in ElasticSearch.
  
 h3. Installation
 
-To install SegmentSpy onto your node, run <code>bin/plugin -install polyfractal/elasticsearch-inquisitor</code>
+To install Inquisitor onto your node, run <code>bin/plugin -install polyfractal/elasticsearch-inquisitor</code>
 
 Inquisitor automatically connects to <code>localhost</code>, so it must be run on a node that is web-accessible.  To access Inquisitor, open <code>http://localhost:9200/_plugin/inquisitor/</code>
 
@@ -31,19 +31,19 @@ Inquisitor parses your JSON query as you type.  If the JSON is valid, it prints 
 
 h4. Pretty Errors
 
-Error messages from ElasticSearch are often large, nested blocks of text mixed with mangled JSON.  Inquisitor parses the error and re-formats it into a table, allowing you to quickly identify the problem with your query.
+Error messages from ElasticSearch are often large, nested blocks of text mixed with JSON encoded JSON (eww).  Inquisitor parses the error and re-formats it into a table, allowing you to quickly identify the problem with your query.
 
 !errors.png!
 
 h4. Automatic Highlighting
 
-Inquisitor attempts to autodetect fields in your query that match properties in your type's mapping.  If a property is autodetected, highlighting is automatically enabled in the results.
+Inquisitor attempts to autodetect fields that match properties in your mapping.  If a property is autodetected, highlighting is automatically enabled in the results.
 
 !highlighting.png!
 
 h4. Formatted Search Results
 
-Search results are presented in a formatted table.  Relevance scores and document IDs are displayed in the top-left corner of each result.  In the top-right corner, Inquisitor gives you the ability to dive into the result's scoring using ElasticSearch's Explain API..  If highlighting is enabled, highlighted fragments be marked with yellow backgrounds.  The full document source is shown below the fragments.
+Search results are presented in a formatted table.  Relevance scores and document IDs are displayed in the top-left corner of each result.  In the top-right corner, Inquisitor gives you the ability to dive into the result's scoring using ElasticSearch's Explain API.  If highlighting is enabled, highlighted fragments be marked with yellow backgrounds.  The full document source is shown below the fragments.
 
 !result.png!
 
@@ -62,13 +62,17 @@ Simlar to the Analyzer tab, Inquisitor also has a Tokenizer tab which analyzes a
 
 h3. Background Information
 
-This plugin was written because "Why didn't my query return the correct results?" questions are extremely prevalent.  They are also difficult for third-parties to help diagnose without a full recreation of the searech environment.  It is hoped that Inquisitor helps people diagnose their query problems without needing to turn to outside help.  It can also function as a great learning tool, to understand how ElasticSearch parses and matches queries.
+This plugin was written because "_Why didn't my query return the correct results?_" questions are extremely prevalent.  They are also difficult for third-parties to help diagnose without a full recreation of the search environment.
 
-Inquisitor was written in AngularJS.  This is my first project in AngularJS, so if you are reading the code...be kind!  I basically have no idea what I'm doing in Angular :)
+I'm hoping that Inquisitor helps people diagnose their query problems without needing to turn to outside help, by providing a friendly interface to how ElasticSearch is parsing and executing search requests.  It can also function as a great learning tool, to understand how ElasticSearch parses and matches queries.
+
+Inquisitor was written in AngularJS.  This is my first project in AngularJS, so if you are reading the code...be kind!  I basically have no idea what I'm doing in Angular =)
 
 h3. Roadmap
 * Fully integrate the Explain API once it supports POST requests
+* Nested and Parent/Child support
 * Load custom analyzers
+* Modifying the default settings of analyzers/tokenizers
 * Ad-hoc analyzer creation to test analyzers that have not been mapped yet
 * Query_string parsing tab, since query_string has a pre-parsing phase which confuses many people
 * Visual query builder
