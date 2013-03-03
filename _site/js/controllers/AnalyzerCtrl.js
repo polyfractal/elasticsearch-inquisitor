@@ -4,8 +4,6 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
     $scope.analyzer = Analyzer;
     $scope.data = Data;
 
-    $scope.atext = {};
-
     $scope.$watch('analyzer.query', function(value){
         for (i in $scope.analyzer.analyzers){
             $scope.analyze($scope.analyzer.analyzers[i]);
