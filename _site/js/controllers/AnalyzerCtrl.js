@@ -4,7 +4,7 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
     $scope.analyzer = Analyzer;
     $scope.data = Data;
 
-    $scope.atext = [];
+    $scope.atext = {};
 
     $scope.$watch('analyzer.query', function(value){
         for (i in $scope.analyzer.analyzers){
@@ -17,11 +17,11 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
 
         $http.post(path, $scope.analyzer.query)
             .success(function(response){
-                var ret = '';
+                var tokens = [];
                 for(i in response.tokens){
-                    ret += '[' + response.tokens[i].token + '] ';
+                    tokens.push(response.tokens[i].token);
                 }
-                $scope.analyzer.atext[analyzer] = ret;
+                $scope.analyzer.atext[analyzer] = tokens;
 
             })
             .error(function(data, status, headers, config){

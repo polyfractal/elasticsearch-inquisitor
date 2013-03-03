@@ -17,11 +17,12 @@
                         <td>Analyzed Text</td>
                     </tr>
                 </thead>
-                <tbody >
-                    <tr  ng-repeat="a in analyzer.analyzers">
+                <tbody>
+                    <tr ng-repeat="a in analyzer.analyzers">
                         <td>{{a}}</td>
-                        <td>{{$parent.analyzer.atext[a]}}</td>
-                        <!--<td>{{$parent.analyzer.query}}</td>  $parent.analyzer.atext[a] -->
+                        <td>
+                            <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext[a]">{{token}} </span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
