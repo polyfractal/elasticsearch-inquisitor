@@ -4,8 +4,6 @@ function TokenizerCtrl($scope, $http, Tokenizer, Data){
     $scope.tokenizer = Tokenizer;
     $scope.data = Data;
 
-    $scope.ttext = [];
-
     $scope.$watch('tokenizer.query', function(value){
         for (i in $scope.tokenizer.tokenizers){
             $scope.analyze($scope.tokenizer.tokenizers[i]);
@@ -17,11 +15,16 @@ function TokenizerCtrl($scope, $http, Tokenizer, Data){
 
         $http.post(path, $scope.tokenizer.query)
             .success(function(response){
-                var ret = '';
+                var tokens = [];
                 for(i in response.tokens){
-                    ret += '[' + response.tokens[i].token + '] ';
+                    var token = response.tokens[i].token;
+
+                    //bootstrap labels do silly things with only a single space
+                    if (token === ' ') {token = "&nbsp;";}
+
+                    tokens.push(token);
                 }
-                $scope.tokenizer.ttext[tokenizer] = ret;
+                $scope.tokenizer.ttext[tokenizer] = tokens;
 
             })
             .error(function(data, status, headers, config){

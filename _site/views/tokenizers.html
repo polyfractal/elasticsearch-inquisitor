@@ -18,9 +18,11 @@
                 </tr>
                 </thead>
                 <tbody >
-                <tr  ng-repeat="t in tokenizer.tokenizers">
+                <tr ng-repeat="t in tokenizer.tokenizers">
                     <td>{{t}}</td>
-                    <td>{{$parent.tokenizer.ttext[t]}}</td>
+                    <td>
+                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in tokenizer.ttext[t]" ng-bind-html="token"> </span>
+                    </td>
                 </tr>
                 </tbody>
             </table>
