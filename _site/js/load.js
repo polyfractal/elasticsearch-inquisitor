@@ -5,6 +5,8 @@
     }, {
         jsonlint: "js/vendor/jsonlint.js"
     }, {
+        lucenequeryparser: "js/vendor/lucene/lucene-query-parser.js"
+    }, {
         angularjs: "js/vendor/angular.min.js"
     }, {
         angularsanitize: "js/vendor/angular-sanitize.min.js"
