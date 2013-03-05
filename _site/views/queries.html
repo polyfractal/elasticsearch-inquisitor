@@ -106,6 +106,21 @@
                 <rawerror error="{{data.elasticError}}"></rawerror>
             </div>
 
+            <div class="alert alert-info" ng-show="data.elasticValidation.valid">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <td>Index</td>
+                        <td>Lucene Query Translation</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="index in data.elasticValidation.explanations">
+                        <td>{{index.index}}</td>
+                        <td>{{index.explanation}}</td>
+                    </tr>
+                </table>
+            </div>
 
 
 
