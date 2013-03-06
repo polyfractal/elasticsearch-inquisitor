@@ -49,6 +49,11 @@ function QueryInput($scope, $http, $filter, Data){
     }
 
     $scope.executeQuery = function() {
+        $scope.query();
+        $scope.validate();
+    }
+
+    $scope.query = function() {
 
         //inject the highlighter
         var query = $scope.data.query.slice(0,-1);
@@ -75,7 +80,7 @@ function QueryInput($scope, $http, $filter, Data){
             })
             .error(function(data, status, headers, config){
                 $scope.data.elasticResponse = [];
-
+                $scope.data.elasticValidation = [];
                 if (status == '400')
                     $scope.data.elasticError = data;
                 else {
@@ -104,6 +109,35 @@ function QueryInput($scope, $http, $filter, Data){
 
                     $scope.data.elasticError = errorData;
                 }
+
+            });
+    };
+
+    $scope.validate = function() {
+
+        //validate API needs just the query, not the wrapping "query":{}
+        //Parse to JSON and extract just the query portion
+        try {
+            var query = JSON.parse($scope.data.query);
+            var query = JSON.stringify(query.query);
+        } catch (e){
+            //if there was an error, it probably wasn't valid JSON.
+            //The error reporting from query() will catch it
+            return;
+        }
+
+        console.log(query);
+
+        var path = $scope.data.host + "/" + $scope.data.currentIndex  + "/_validate/query?explain=true";
+
+        $http.post(path, query)
+            .success(function(response){
+                console.log(response);
+                $scope.data.elasticValidation = response;
+            })
+            .error(function(data, status, headers, config){
+                console.log(data);
+                $scope.data.elasticValidation = data;
 
             });
     };
