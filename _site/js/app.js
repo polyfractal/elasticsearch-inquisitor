@@ -1,7 +1,7 @@
 angular.module('inquisitor.service', [])
     .value('Data', {
         host: "http://localhost:9200",
-        query:'{"query" : {"match": {"field1":"pattern"}}}',
+        query:'{"query" : {"match_all": {}}}',
         highlight: '"highlight":{"order" : "score", "pre_tags" : ["<span class=\'highlight\'>"],"post_tags" : ["</span>"],"fields":{',
         elasticResponse: "",
         elasticError: [],

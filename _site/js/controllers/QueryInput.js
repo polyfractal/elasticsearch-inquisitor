@@ -77,6 +77,7 @@ function QueryInput($scope, $http, $filter, Data){
             .success(function(response){
                 $scope.data.elasticError = [];
                 $scope.data.elasticResponse = response;
+                console.log(response);
             })
             .error(function(data, status, headers, config){
                 $scope.data.elasticResponse = [];
