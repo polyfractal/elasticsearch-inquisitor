@@ -107,7 +107,7 @@
             </div>
 
             <div class="alert alert-info" ng-show="data.elasticValidation.valid">
-                <table class="table table-bordered">
+                <table class="table table-bordered" style="margin-bottom: 0px;">
                     <thead>
                     <tr>
                         <td>Index</td>
@@ -125,6 +125,12 @@
 
 
             <div ng-show="data.elasticResponse">
+                <div class="elasticResponseStatus" style="text-align: center;border: none">
+                    <span class="label label-info">Elapsed Time: {{data.elasticResponse.took}}ms</span>
+                    <span class="label" ng-class="{'label-success': data.elasticResponse.hits.total > 0, 'label-important': data.elasticResponse.hits.total == 0}">Total Hits: {{data.elasticResponse.hits.total}}</span>
+                    <span class="label label-info" ng-show="data.elasticResponse.hits.total">Max Score: {{data.elasticResponse.hits.max_score}}</span>
+                </div>
+
                 <div class="elasticHit" ng-repeat="hits in data.elasticResponse.hits.hits">
                     <div class="elasticHitTitle">{{hits._score}} - {{hits._id}}</div>
                     <div class="explainHit"><a modal-open="a{{hits._id}}">Explain Result</a></div>

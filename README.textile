@@ -49,9 +49,13 @@ Search results are presented in a formatted table.  Relevance scores and documen
 
 h4. Analyzer testing
 
-In addition to query results, Inquisitor has a tab that analyzes arbitrary text using ElasticSearch's built-in analyzers.  Custom analyzers will be supported soon.
+In addition to query results, Inquisitor has a tab that analyzes arbitrary text using ElasticSearch's built-in analyzers.
 
 !analyzers.png!
+
+In addition to the standard analyzers that ElasticSearch provides, Inquisitor allows you to look at the output of your custom analyzers and on a per-field basis
+
+!custom.png!
 
 h4. Tokenizer testing
 
@@ -71,9 +75,7 @@ Inquisitor was written in AngularJS.  This is my first project in AngularJS, so 
 h2. Roadmap
 * Fully integrate the Explain API once it supports POST requests
 * Nested and Parent/Child support
-* Load custom analyzers
 * Modifying the default settings of analyzers/tokenizers
 * Ad-hoc analyzer creation to test analyzers that have not been mapped yet
-* Query_string parsing tab, since query_string has a pre-parsing phase which confuses many people
 * Visual query builder
 
