@@ -30,7 +30,7 @@
             <table class="table table-bordered" style="width:100%" ng-repeat="(index, val) in analyzer.customAnalyzers">
                 <thead>
                 <tr>
-                    <td style="width:100px">Index: {{index}}</td>
+                    <td style="width:100px"><input type="checkbox" ng-model="val.enable" style="margin:2px">Index: {{index}}</td>
                     <td>Analyzed Text</td>
                 </tr>
                 </thead>
