@@ -41,6 +41,25 @@
                         <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext[analyzerName]">{{token}} </span>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <div class="dropdown"  ng-cloak>
+                            <a class="btn btn-small dropdown-toggle">
+                                <strong>Property:</strong> {{analyzer.currentField[index]}} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="choice in analyzer.fields[index]">
+                                    <a ng-click="$parent.analyzer.currentField[index] = choice">{{choice}}</a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </td>
+                    <td>
+                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext[analyzer.currentField[index]]">{{token}} </span>
+                    </td>
+                </tr>
                 </tbody>
             </table>
 
