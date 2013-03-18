@@ -13,7 +13,7 @@
             <table class="table table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <td style="width:100px">Analyzer</td>
+                        <td style="width:100px">Standard Analyzers</td>
                         <td>Analyzed Text</td>
                     </tr>
                 </thead>
@@ -26,6 +26,24 @@
                     </tr>
                 </tbody>
             </table>
+
+            <table class="table table-bordered" style="width:100%" ng-repeat="(index, val) in analyzer.customAnalyzers">
+                <thead>
+                <tr>
+                    <td style="width:100px">Index: {{index}}</td>
+                    <td>Analyzed Text</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(analyzerName, analyzerDetails) in val.index.analysis.analyzer">
+                    <td>{{analyzerName}}</td>
+                    <td>
+                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext[analyzerName]">{{token}} </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
            </div>
     </div>
 </div>

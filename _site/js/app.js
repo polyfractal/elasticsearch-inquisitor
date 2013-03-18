@@ -14,6 +14,7 @@ angular.module('inquisitor.service', [])
     .value('Analyzer', {
         query: 'the quick brown fox',
         analyzers: ['standard', 'simple', 'whitespace', 'stop', 'keyword', 'pattern', 'snowball'],
+        customAnalyzers: {},
         atext: {}
     })
     .value('Tokenizer', {
