@@ -132,6 +132,8 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
     function updateCustomAnalyzers(){
 
         for (index in $scope.analyzer.customAnalyzers){
+            if ( ! $scope.analyzer.customAnalyzers[index].enable )
+              continue;
 
             //Make sure this index has some analyzer defined
             if (typeof $scope.analyzer.customAnalyzers[index].index.analysis !== "undefined"
