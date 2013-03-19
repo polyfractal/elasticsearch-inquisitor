@@ -137,7 +137,26 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
         }
     }, true);
 
+    //This function is called when the "Enable" checkbox is toggled.
+    //Used to selectively update indices without calling the update* functions
+    $scope.indexEnabled = function(index) {
+        if(! $scope.analyzer.customAnalyzers[index].enable)
+            return;
 
+        //update the custom analyzers
+        updateCustomAnalyzer(index);
+
+        //and individual fields
+        updateField(index);
+
+    }
+
+
+    /**
+     * Update section
+     *
+     * These methods are helpers to the Watch section
+     */
 
     function updateStandardAnalyzers() {
         for (index in $scope.analyzer.analyzers){
@@ -163,7 +182,7 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
     }
 
     function updateField(index) {
-        //console.log($scope.analyzer.customAnalyzers[index].enable, isUndefined($scope.analyzer.customAnalyzers[index]) === true, ! $scope.analyzer.customAnalyzers[index].enable);
+
         //Only query indices that are enabled
         if ( isUndefined($scope.analyzer.customAnalyzers[index]) || ! $scope.analyzer.customAnalyzers[index].enable )
             return;
@@ -239,20 +258,7 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
     }
 
 
-    //This function is called when the "Enable" checkbox is toggled.
-    //Used to selectively update indices without calling the update* functions
-    $scope.indexEnabled = function(index) {
-        if(! $scope.analyzer.customAnalyzers[index].enable)
-            return;
 
-            //update the custom analyzers
-            updateCustomAnalyzer(index);
-
-            //and individual fields
-            updateField(index);
-
-
-    }
 
 
 
