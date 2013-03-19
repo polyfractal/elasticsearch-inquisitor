@@ -104,10 +104,14 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
         updateStandardAnalyzers();
 
         //then update custom analyzers
-        updateCustomAnalyzers();
+        for (index in $scope.analyzer.customAnalyzers){
+            updateCustomAnalyzers();
+        }
 
         //then update per-field analyzers
-        updateFields();
+        for (index in $scope.analyzer.fields) {
+            updateFields();
+        }
     });
 
     //Because detectCustomAnalyzers executes asynch, we need to watch the customAnalyzer field
@@ -129,29 +133,33 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
         }
     }
 
-    function updateCustomAnalyzers(){
+    function updateCustomAnalyzer(index){
 
-        for (index in $scope.analyzer.customAnalyzers){
-            if ( ! $scope.analyzer.customAnalyzers[index].enable )
-              continue;
+        //Only query indices that are enabled
+        if ( ! $scope.analyzer.customAnalyzers[index].enable )
+            return;
 
-            //Make sure this index has some analyzer defined
-            if (typeof $scope.analyzer.customAnalyzers[index].index.analysis !== "undefined"
-                && typeof $scope.analyzer.customAnalyzers[index].index.analysis.analyzer !== "undefined") {
+        //Make sure this index has some analyzer defined
+        if (typeof $scope.analyzer.customAnalyzers[index].index.analysis !== "undefined"
+            && typeof $scope.analyzer.customAnalyzers[index].index.analysis.analyzer !== "undefined") {
 
-                for (cAnalyzer in $scope.analyzer.customAnalyzers[index].index.analysis.analyzer) {
-                    $scope.analyzeCustom(cAnalyzer, index);
-                }
+            for (cAnalyzer in $scope.analyzer.customAnalyzers[index].index.analysis.analyzer) {
+                $scope.analyzeCustom(cAnalyzer, index);
             }
         }
+
     }
 
-    function updateFields() {
-        for (index in $scope.analyzer.fields) {
-            for (field in $scope.analyzer.fields[index]) {
-                $scope.analyzeField($scope.analyzer.fields[index][field], index);
-            }
-        }
+    function updateField(index) {
+
+        //Only query indices that are enabled
+        if ( ! $scope.analyzer.customAnalyzers[index].enable )
+            return;
+
+        //if a currentField is set for this index
+        if ($scope.analyzer.currentField[index])
+            $scope.analyzeField($scope.analyzer.currentField[index], index);
+
     }
 
 
@@ -219,7 +227,20 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
     }
 
 
+    //This function is called when the "Enable" checkbox is toggled.
+    //Used to selectively update indices without calling the update* functions
+    $scope.indexEnabled = function(index) {
+        if($scope.analyzer.customAnalyzers[index].enable){
 
+            //update the custom analyzers
+            updateCustomAnalyzer(index);
+
+            //and individual fields
+            updateField(index);
+
+        }
+
+    }
 
 
 
