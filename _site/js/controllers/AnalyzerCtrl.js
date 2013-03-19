@@ -1,4 +1,12 @@
 
+/**
+ * Misc functions
+ */
+
+function isUndefined(value) {
+    return typeof value === "undefined";
+}
+
 function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
@@ -105,24 +113,28 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
 
         //then update custom analyzers
         for (index in $scope.analyzer.customAnalyzers){
-            updateCustomAnalyzers();
+            updateCustomAnalyzer(index);
         }
 
         //then update per-field analyzers
         for (index in $scope.analyzer.fields) {
-            updateFields();
+            updateField(index);
         }
     });
 
     //Because detectCustomAnalyzers executes asynch, we need to watch the customAnalyzer field
     //to detect when the GET returns
     $scope.$watch('analyzer.customAnalyzers', function(value) {
-        updateCustomAnalyzers();
+        for (index in $scope.analyzer.customAnalyzers){
+            updateCustomAnalyzer(index);
+        }
     });
 
     //If any of the user-selected fields change, update
     $scope.$watch('analyzer.currentField', function(value) {
-        updateFields();
+        for (index in $scope.analyzer.fields) {
+            updateField(index);
+        }
     }, true);
 
 
@@ -136,7 +148,7 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
     function updateCustomAnalyzer(index){
 
         //Only query indices that are enabled
-        if ( ! $scope.analyzer.customAnalyzers[index].enable )
+        if ( isUndefined($scope.analyzer.customAnalyzers[index]) || ! $scope.analyzer.customAnalyzers[index].enable )
             return;
 
         //Make sure this index has some analyzer defined
@@ -151,9 +163,9 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
     }
 
     function updateField(index) {
-
+        //console.log($scope.analyzer.customAnalyzers[index].enable, isUndefined($scope.analyzer.customAnalyzers[index]) === true, ! $scope.analyzer.customAnalyzers[index].enable);
         //Only query indices that are enabled
-        if ( ! $scope.analyzer.customAnalyzers[index].enable )
+        if ( isUndefined($scope.analyzer.customAnalyzers[index]) || ! $scope.analyzer.customAnalyzers[index].enable )
             return;
 
         //if a currentField is set for this index
@@ -230,7 +242,8 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
     //This function is called when the "Enable" checkbox is toggled.
     //Used to selectively update indices without calling the update* functions
     $scope.indexEnabled = function(index) {
-        if($scope.analyzer.customAnalyzers[index].enable){
+        if(! $scope.analyzer.customAnalyzers[index].enable)
+            return;
 
             //update the custom analyzers
             updateCustomAnalyzer(index);
@@ -238,7 +251,6 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
             //and individual fields
             updateField(index);
 
-        }
 
     }
 
