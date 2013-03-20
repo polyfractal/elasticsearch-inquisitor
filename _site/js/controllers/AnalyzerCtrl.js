@@ -11,9 +11,12 @@ function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
+
 function AnalyzerCtrl($scope, $http, Analyzer, Data){
     $scope.analyzer = Analyzer;
     $scope.data = Data;
+
+
 
     /**
      * Detection section

@@ -27,6 +27,31 @@
                 </tbody>
             </table>
 
+
+            <table class="table table-bordered" ng-controller="AdhocCtrl" style="width:100%">
+                <thead>
+                <tr>
+                    <td style="width:200px">Tokenizer</td>
+                    <td>Filters</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td style="width:200px">
+                        <input type="text" id="tokenizerSelection" ui-select2="tokenizerAllOptions" ng-model="tokenizerSelection" style="width:100%;" />
+                    </td>
+                    <td >
+                        <input type="text" id="filterSelection" ui-select2="filterAllOptions" ng-model="filterSelection" style="width:100%;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext['adhoc']">{{token}} </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
             <table class="table table-bordered" style="width:100%" ng-repeat="(index, val) in analyzer.customAnalyzers">
                 <thead>
                 <tr>

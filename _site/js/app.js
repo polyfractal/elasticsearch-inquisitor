@@ -26,7 +26,7 @@ angular.module('inquisitor.service', [])
     })
     .value('Filter', {
         query: 'the quick brown fox',
-        filters: ['standard', 'asciifolding ', 'length', 'lowercase', 'nGram', 'edgeNGram',
+        filters: ['standard', 'asciifolding', 'length', 'lowercase', 'nGram', 'edgeNGram',
                     'porterStem', 'shingle', 'stop', 'word_delimiter', 'stemmer','keyword_marker',
                     'kstem', 'snowball', 'phonetic', 'synonym', 'dictionary_decompounder', 'hyphenation_decompounder',
                     'reverse', 'elision', 'truncate', 'unique', 'trim'],
@@ -34,7 +34,7 @@ angular.module('inquisitor.service', [])
     });
 
 
-var app = angular.module('Inquisitor', ['inquisitor.service', 'ui.bootstrap', 'ngSanitize']);
+var app = angular.module('Inquisitor', ['inquisitor.service', 'ui.bootstrap', 'ui', 'ngSanitize']);
 
 app.config(function ($routeProvider) {
     $routeProvider
