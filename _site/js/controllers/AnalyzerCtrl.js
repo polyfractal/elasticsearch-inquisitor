@@ -47,17 +47,30 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
             for (j in response.metadata.indices[i].mappings){
                 for (k in response.metadata.indices[i].mappings[j].properties) {
 
-                    if (typeof $scope.analyzer.fields[i] === "undefined") {
-                        $scope.analyzer.fields[i] = [];
-                        $scope.analyzer.currentField[i] = "";
+                    //is this a multi_field?
+                    if (response.metadata.indices[i].mappings[j].properties[k].hasOwnProperty("fields")){
+                        for(m in response.metadata.indices[i].mappings[j].properties[k].fields) {
+
+                            if (typeof $scope.analyzer.fields[i] === "undefined") {
+                                $scope.analyzer.fields[i] = [];
+                                $scope.analyzer.currentField[i] = "";
+                            }
+
+                            $scope.analyzer.fields[i].push(k + "." + m);
+                        }
+                    } else {
+                        if (typeof $scope.analyzer.fields[i] === "undefined") {
+                            $scope.analyzer.fields[i] = [];
+                            $scope.analyzer.currentField[i] = "";
+                        }
+
+                        $scope.analyzer.fields[i].push(k);
                     }
 
 
-                    $scope.analyzer.fields[i].push(k);
                 }
             }
         }
-        console.log($scope.analyzer.fields);
     }
 
     function detectCustomAnalzyers(response) {
