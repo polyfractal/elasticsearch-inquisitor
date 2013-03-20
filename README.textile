@@ -49,13 +49,10 @@ Search results are presented in a formatted table.  Relevance scores and documen
 
 h4. Analyzer testing
 
-In addition to query results, Inquisitor has a tab that analyzes arbitrary text using ElasticSearch's built-in analyzers.
+In addition to query results, Inquisitor has a tab that analyzes arbitrary text using ElasticSearch's built-in analyzers.  Inquisitor also allows you to look at the output of your custom analyzers and on a per-field basis.  You can even build "AdHoc" analyzers using a mix a tokenizer and one or more filters.
 
 !analyzers.png!
 
-In addition to the standard analyzers that ElasticSearch provides, Inquisitor allows you to look at the output of your custom analyzers and on a per-field basis.  You can even build "AdHoc" analyzers using a mix a tokenizer and one or more filters.
-
-!custom.png!
 
 h4. Tokenizer testing
 
