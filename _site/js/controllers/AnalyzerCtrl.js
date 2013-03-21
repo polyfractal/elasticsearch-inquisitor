@@ -124,6 +124,8 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
     //If the text changes, query ES to get the tokens
     $scope.$watch('analyzer.query', function(value){
 
+        console.log($scope.analyzer.atext);
+
         //first update standard analyzers
         updateStandardAnalyzers();
 
@@ -216,7 +218,7 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
      * These functions query ES and perform the actual analysis
      */
 
-    $scope.analyzeStandard = function(analyzer, index) {
+    $scope.analyzeStandard = function(analyzer) {
 
         var path = $scope.data.host + "/_analyze?analyzer=" + analyzer;
 
@@ -226,11 +228,11 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
                 for(i in response.tokens){
                     tokens.push(response.tokens[i].token);
                 }
-                $scope.analyzer.atext[analyzer] = tokens;
+                $scope.analyzer.atext['standard.' + analyzer] = tokens;
 
             })
             .error(function(data, status, headers, config){
-                //console.log(data);
+                $scope.analyzer.atext[index + '.' + field] = data;
 
             });
     }
@@ -245,11 +247,11 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
                 for(i in response.tokens){
                     tokens.push(response.tokens[i].token);
                 }
-                $scope.analyzer.atext[analyzer] = tokens;
+                $scope.analyzer.atext[index + '.' + analyzer] = tokens;
 
             })
             .error(function(data, status, headers, config){
-                //console.log(data);
+                $scope.analyzer.atext[index + '.' + field] = data;
 
             });
     }
@@ -264,11 +266,11 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
                 for(i in response.tokens){
                     tokens.push(response.tokens[i].token);
                 }
-                $scope.analyzer.atext[field] = tokens;
+                $scope.analyzer.atext[index + '.' + field] = tokens;
 
             })
             .error(function(data, status, headers, config){
-                //console.log(data);
+                $scope.analyzer.atext[index + '.' + field] = data;
 
             });
     }

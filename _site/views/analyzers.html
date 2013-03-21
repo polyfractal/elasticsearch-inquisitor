@@ -21,7 +21,7 @@
                     <tr ng-repeat="a in analyzer.analyzers">
                         <td>{{a}}</td>
                         <td>
-                            <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext[a]">{{token}} </span>
+                            <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext['standard.' + a]">{{token}} </span>
                         </td>
                     </tr>
                 </tbody>
@@ -63,7 +63,7 @@
                 <tr ng-repeat="(analyzerName, analyzerDetails) in val.index.analysis.analyzer">
                     <td>{{analyzerName}}</td>
                     <td>
-                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext[analyzerName]">{{token}} </span>
+                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext[index + '.' + analyzerName]">{{token}} </span>
                     </td>
                 </tr>
                 <tr>
@@ -82,7 +82,7 @@
 
                     </td>
                     <td>
-                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext[analyzer.currentField[index]]">{{token}} </span>
+                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext[index + '.' + analyzer.currentField[index]]">{{token}} </span>
                     </td>
                 </tr>
                 </tbody>
