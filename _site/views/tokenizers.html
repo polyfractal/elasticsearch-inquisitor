@@ -23,7 +23,7 @@
                     <td>
                         <div class="label" style="margin-right: 0.25em;" ng-repeat="token in tokenizer.ttext[t]">
                             <div style="display:inline-block; margin-right: 0.25em">
-                                {{token.token}} <span style="color:lightgray">{{token.position}}</span>
+                                <span ng-bind-html-unsafe="token.token"></span>&nbsp;<span style="color:lightgray">{{token.position}}</span>
                             </div>
                         </div>
                     </td>
