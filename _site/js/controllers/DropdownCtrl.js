@@ -12,19 +12,27 @@ function DropdownCtrl($scope, $http, Data) {
 
         for (i in response.data){
 
-            //set the currentIndex to the first index we encounter
-            //if ($scope.data.currentIndex === "")
-            //    $scope.data.currentIndex = i;
-
             $scope.indices.push(i)
             $scope.types[i] = [];
             for (j in response.data[i]){
-                //set the currentType to the first type we encounter
-                //if ($scope.data.currentType === "")
-                //    $scope.data.currentType = j;
 
                 $scope.types[i].push(j);
             }
         }
+
+
+        path = $scope.data.host + "/_aliases";
+        $http.get(path).then(function(response){
+
+          for (i in response.data){
+            for (j in response.data[i].aliases) {
+              $scope.indices.push(j);
+              $scope.types[j] = $scope.types[i];
+              $scope.data.mapping[j] = $scope.data.mapping[i];
+            }
+          }
+        });
     });
+
+
 }
