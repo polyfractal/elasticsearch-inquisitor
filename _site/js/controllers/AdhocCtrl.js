@@ -151,7 +151,7 @@ function AdhocCtrl($scope, $http, Analyzer, Tokenizer, Filter, Data){
             .success(function(response){
                 var tokens = [];
                 for(i in response.tokens){
-                    tokens.push(response.tokens[i].token);
+                    tokens.push(response.tokens[i]);
                 }
                 $scope.analyzer.atext['adhoc'] = tokens;
 

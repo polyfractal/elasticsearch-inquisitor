@@ -226,14 +226,14 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
             .success(function(response){
                 var tokens = [];
                 for(i in response.tokens){
-                    tokens.push(response.tokens[i].token);
+                    tokens.push(response.tokens[i]);
                 }
                 $scope.analyzer.atext['standard.' + analyzer] = tokens;
 
             })
             .error(function(data, status, headers, config){
-                $scope.analyzer.atext[index + '.' + field] = data;
-
+                $scope.analyzer.atext[index + '.' + field] = [];
+                $scope.analyzer.atext[index + '.' + field].push({token:data.error});
             });
     }
 
@@ -245,14 +245,13 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
             .success(function(response){
                 var tokens = [];
                 for(i in response.tokens){
-                    tokens.push(response.tokens[i].token);
+                    tokens.push(response.tokens[i]);
                 }
                 $scope.analyzer.atext[index + '.' + analyzer] = tokens;
-
             })
             .error(function(data, status, headers, config){
-                $scope.analyzer.atext[index + '.' + field] = data;
-
+                $scope.analyzer.atext[index + '.' + field] = [];
+                $scope.analyzer.atext[index + '.' + field].push({token:data.error});
             });
     }
 
@@ -264,14 +263,14 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
             .success(function(response){
                 var tokens = [];
                 for(i in response.tokens){
-                    tokens.push(response.tokens[i].token);
+                    tokens.push(response.tokens[i]);
                 }
                 $scope.analyzer.atext[index + '.' + field] = tokens;
 
             })
             .error(function(data, status, headers, config){
-                $scope.analyzer.atext[index + '.' + field] = data;
-
+                $scope.analyzer.atext[index + '.' + field] = [];
+                $scope.analyzer.atext[index + '.' + field].push({token:data.error});
             });
     }
 

@@ -17,7 +17,9 @@ function TokenizerCtrl($scope, $http, Tokenizer, Data){
             .success(function(response){
                 var tokens = [];
                 for(i in response.tokens){
-                    var token = response.tokens[i].token;
+                    var token = response.tokens[i];
+
+                  console.log(response.tokens[i]);
 
                     //bootstrap labels do silly things with only a single space
                     if (token === ' ') {token = "&nbsp;";}

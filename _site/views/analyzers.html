@@ -21,7 +21,9 @@
                     <tr ng-repeat="a in analyzer.analyzers">
                         <td>{{a}}</td>
                         <td>
-                            <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext['standard.' + a]">{{token}} </span>
+                            <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext['standard.' + a]">
+                                {{token.token}} <span style="color:lightgray">{{token.position}}</span>
+                            </span>
                         </td>
                     </tr>
                 </tbody>
@@ -46,7 +48,9 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext['adhoc']">{{token}} </span>
+                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext['adhoc']">
+                            {{token.token}} <span style="color:lightgray">{{token.position}}</span>
+                        </span>
                     </td>
                 </tr>
                 </tbody>
@@ -63,7 +67,9 @@
                 <tr ng-repeat="(analyzerName, analyzerDetails) in val.index.analysis.analyzer">
                     <td>{{analyzerName}}</td>
                     <td>
-                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext[index + '.' + analyzerName]">{{token}} </span>
+                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext[index + '.' + analyzerName]">
+                            {{token.token}} <span style="color:lightgray">{{token.position}}</span>
+                        </span>
                     </td>
                 </tr>
                 <tr>
@@ -82,7 +88,9 @@
 
                     </td>
                     <td>
-                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext[index + '.' + analyzer.currentField[index]]">{{token}} </span>
+                        <span class="label" style="margin-right: 0.25em" ng-repeat="token in analyzer.atext[index + '.' + analyzer.currentField[index]]">
+                            {{token.token}} <span style="color:lightgray">{{token.position}}</span>
+                        </span>
                     </td>
                 </tr>
                 </tbody>

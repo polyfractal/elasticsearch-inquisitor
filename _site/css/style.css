@@ -105,3 +105,6 @@ thead {
     width: 780px;
     margin-left: -390px; /* - width/2 */
 }
+
+.superscript{font-size:70%; position:relative;  top:-3px; color:lightgray}
+.subscript{font-size:60%;  position:relative; bottom:-3px}
