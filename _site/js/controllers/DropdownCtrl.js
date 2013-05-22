@@ -12,7 +12,7 @@ function DropdownCtrl($scope, $http, Data) {
 
         for (i in response.data){
 
-            $scope.indices.push(i)
+            $scope.indices.push(i);
             $scope.types[i] = [];
             for (j in response.data[i]){
 
@@ -31,6 +31,9 @@ function DropdownCtrl($scope, $http, Data) {
               $scope.data.mapping[j] = $scope.data.mapping[i];
             }
           }
+
+          $scope.indices.sort();
+          $scope.types.sort();
         });
     });
 
