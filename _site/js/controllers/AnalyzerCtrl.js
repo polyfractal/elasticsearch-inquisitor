@@ -59,7 +59,11 @@ function AnalyzerCtrl($scope, $http, Analyzer, Data){
                                 $scope.analyzer.currentField[i] = "";
                             }
 
-                            $scope.analyzer.fields[i].push(k + "." + m);
+                            if (k === m){
+                                $scope.analyzer.fields[i].push(k);
+                            } else {
+                                $scope.analyzer.fields[i].push(k + "." + m);
+                            }
                         }
                     } else {
                         if (typeof $scope.analyzer.fields[i] === "undefined") {
