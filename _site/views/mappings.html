@@ -1,0 +1,118 @@
+<div class="container-fluid" id="content" style="margin-top:20px" ng-controller="MappingCtrl">
+    <div class="row-fluid">
+
+        <div class="span6">
+            <div>
+                <div class="dropdown">
+                    <a class="btn btn-small dropdown-toggle" ng-cloak>
+                        New Setting: <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="setting in settings">
+                            <a ng-click="addSetting(setting)">{{setting.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div class="settingList" ng-hide="!settingList.length" style="margin-left:50px">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Setting Name</td>
+                            <td>Value</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="setting in settingList">
+                            <td>{{ setting.name }}</td>
+                            <td><input id="{{ setting.name }}" type="text" placeholder="{{ setting.defaultValue }}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+            <div>
+                <div class="dropdown">
+                    <a class="btn btn-small" ng-cloak ng-click="addType()">
+                        New Type
+                    </a>
+                </div>
+            </div>
+
+            <div class="typeList" ng-hide="!typeList.length" style="margin-left:50px">
+                <div ng-repeat="type in typeList" >
+                    <input ng-model="type.name" id="{{ type.name }}" type="text" value="{{ type.name }}">
+
+                    <div class="dropdown">
+                        <a class="btn btn-small dropdown-toggle" ng-cloak>
+                            New Field: <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="field in fields">
+                                <a ng-click="addField(type, field)">{{field.type}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="fieldList" ng-hide="!type.fields.length" style="margin-left:50px">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Field Name</td>
+                                    <td>Type</td>
+                                    <td>Options</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <tr  ng-repeat="field in type.fields">
+                                        <td style="width:150px"><input id="{{ type.name }}_{{ field.name }}" type="text" value="{{ field.name }}" ng-model = "field.name" style="width:150px"></td>
+                                        <td>{{ field.type }}</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <a class="btn btn-small dropdown-toggle" ng-cloak>
+                                                    Add Option: <span class="caret"></span>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li ng-repeat="option in field.options">
+                                                        <a ng-click="addOption(field, option)">{{option.name}}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <table class="table table-striped" ng-hide="!field.toggledOptions.length">
+                                                <thead>
+                                                <tr>
+                                                    <td>Option Name</td>
+                                                    <td>Value</td>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="option in field.toggledOptions">
+                                                    <td>{{ option.name }}</td>
+                                                    <td><input id="{{ option.name }}" type="text" value="{{ option.value }}" style="width:100px"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+
+                                    </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>

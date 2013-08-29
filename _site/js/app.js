@@ -8,7 +8,7 @@ angular.module('inquisitor.service', [])
         currentIndex: "",
         currentType: "",
         mapping: {} ,
-        tabs:['Queries', 'Analyzers', 'Tokenizers'],
+        tabs:['Queries', 'Analyzers', 'Tokenizers', "Mappings"],
         autodetectfield: false
     })
     .value('Analyzer', {
@@ -31,6 +31,9 @@ angular.module('inquisitor.service', [])
                     'kstem', 'snowball', 'phonetic', 'synonym', 'dictionary_decompounder', 'hyphenation_decompounder',
                     'reverse', 'elision', 'truncate', 'unique', 'trim'],
         ftext: {}
+    })
+    .value('Mapping', {
+
     });
 
 
@@ -53,6 +56,10 @@ app.config(function ($routeProvider) {
         .when('/tokenizers',
         {
             templateUrl: "views/tokenizers.html"
+        })
+        .when('/mappings',
+        {
+          templateUrl: "views/mappings.html"
         });
 });
 
