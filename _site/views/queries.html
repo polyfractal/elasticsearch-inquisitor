@@ -26,7 +26,7 @@
 
             <form ng-controller="QueryInput" ng-submit="executeQuery()">
                 <fieldset >
-                    <span class="input uneditable-input" ng-cloak>{{data.host}}/{{data.currentIndex}}/{{data.currentType}}</span>
+                    <input type="text" ng-model="data.host" value="" ng-cloak>
                     <textarea rows="20" ng-model="data.query" ng-cloak>{{data.query}}</textarea><br/>
                     <button type="submit" class="btn">Query</button>
                 </fieldset>
