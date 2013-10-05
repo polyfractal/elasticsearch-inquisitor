@@ -1,6 +1,11 @@
 
-function QueryInput($scope, $http, $filter, Data){
+function QueryInput($scope, $http, $filter, Data, pubsub){
     $scope.data = Data;
+    $scope.pubsub = pubsub;
+  
+    $scope.hostChanged = function(){
+      $scope.pubsub.publish('HOST_CHANGED', $scope.data.host);
+    };
 
     $scope.$watch('data.query', function(value){
         try {
