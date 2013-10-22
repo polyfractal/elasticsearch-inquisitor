@@ -13,6 +13,9 @@ function DropdownCtrl($scope, $http, Data, pubsub) {
     $scope.loadMappings = function(){
       var path = $scope.data.host + "/_mapping";
       $http.get(path).then(function(response){
+          if($scope.indices && $scope.indices.length > 0){
+              $scope.indicies.length = 0;
+          }
           $scope.data.mapping = response.data;
 
           for (i in response.data){
