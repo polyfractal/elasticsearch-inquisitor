@@ -44,7 +44,7 @@ function QueryInput($scope, $http, $filter, Data, pubsub){
     $scope.autodetectField = function() {
         $scope.data.autodetectfield = false;
 
-        for (i in $scope.data.mapping[$scope.data.currentIndex][$scope.data.currentType].properties){
+        for (i in $scope.data.mapping[$scope.data.currentIndex].mappings[$scope.data.currentType].properties){
             if ($scope.data.query.match(i)){
                 console.log("match",i);
                 $scope.data.autodetectfield = true;
@@ -63,7 +63,7 @@ function QueryInput($scope, $http, $filter, Data, pubsub){
         //inject the highlighter
         var query = $scope.data.query.slice(0,-1);
         var highlightFields = [];
-        for (i in $scope.data.mapping[$scope.data.currentIndex][$scope.data.currentType].properties){
+        for (i in $scope.data.mapping[$scope.data.currentIndex].mappings[$scope.data.currentType].properties){
             if (query.match(i))
                 highlightFields.push('"' + i + '": {}');
         }
