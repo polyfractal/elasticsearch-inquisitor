@@ -22,7 +22,7 @@ function DropdownCtrl($scope, $http, Data, pubsub) {
 
               $scope.indices.push(i);
               $scope.types[i] = [];
-              for (j in response.data[i]){
+              for (j in response.data[i].mappings){
 
                   $scope.types[i].push(j);
               }
