@@ -2,11 +2,16 @@ h1. elasticsearch-inquisitor
 
 Inquisitor is a tool help understand and debug your queries in ElasticSearch.
 
-|_. elasticsearch-inquisitor |_. ElasticSearch |
-| master | 0.19.0.RC1 -> 0.90.* |
+|_. elasticsearch-inquisitor branch |_. ElasticSearch |
+| master | 1.0+ |
+| 0.90.x | 0.90.x |
 | v0.1.* | 0.19.0.RC1 -> 0.20.6 |
 
-*Note:* Inquisitor requires ElasticSearch 0.19.0.RC1 for the 'Analyzers' and 'Tokenizers' tabs, but the main 'Queries' tab will function with versions >= 0.14.0
+*Legacy support:* 
+
+* 0.90.x branch is largely unmaintained, but community PRs will continue to be merged
+
+* If you need support less than 0.90.x, version 0.1.2 _should_ work. Inquisitor requires ElasticSearch 0.19.0.RC1 for the 'Analyzers' and 'Tokenizers' tabs, but the main 'Queries' tab will function with versions >= 0.14.0.  No effort will be taken to support anything less than 0.90.x
  
 h3. Installation
 
