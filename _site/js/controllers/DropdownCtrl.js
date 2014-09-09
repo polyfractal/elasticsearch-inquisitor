@@ -14,7 +14,7 @@ function DropdownCtrl($scope, $http, Data, pubsub) {
       var path = $scope.data.host + "/_mapping";
       $http.get(path).then(function(response){
           if($scope.indices && $scope.indices.length > 0){
-              $scope.indicies.length = 0;
+              $scope.indices.length = 0;
           }
           $scope.data.mapping = response.data;
 
