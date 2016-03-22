@@ -7,17 +7,17 @@ Inquisitor is a tool help understand and debug your queries in ElasticSearch.
 | 0.90.x | 0.90.x |
 | v0.1.* | 0.19.0.RC1 -> 0.20.6 |
 
-*Legacy support:* 
+*Legacy support:*
 
 * 0.90.x branch is largely unmaintained, but community PRs will continue to be merged
 
 * If you need support less than 0.90.x, version 0.1.2 _should_ work. Inquisitor requires ElasticSearch 0.19.0.RC1 for the 'Analyzers' and 'Tokenizers' tabs, but the main 'Queries' tab will function with versions >= 0.14.0.  No effort will be taken to support anything less than 0.90.x
- 
+
 h3. Installation
 
-To install Inquisitor onto your node, run <code>bin/plugin -install polyfractal/elasticsearch-inquisitor</code>
+To install Inquisitor onto your node, run <code>bin/plugin install polyfractal/elasticsearch-inquisitor</code>
 
-Inquisitor automatically connects to <code>localhost</code>, so it must be run on a node that is web-accessible.  To access Inquisitor, open <code>http://localhost:9200/_plugin/inquisitor/</code>
+Inquisitor automatically connects to <code>localhost</code>, so it must be run on a node that is web-accessible.  To access Inquisitor, open <code>http://localhost:9200/_plugin/elasticsearch-inquisitor/</code>
 
 
 h2. Features
@@ -61,9 +61,9 @@ In addition to query results, Inquisitor has a tab that analyzes arbitrary text 
 
 h4. Tokenizer testing
 
-Simlar to the Analyzer tab, Inquisitor also has a Tokenizer tab which analyzes arbitrary text with various tokenizers. 
+Simlar to the Analyzer tab, Inquisitor also has a Tokenizer tab which analyzes arbitrary text with various tokenizers.
 
-!tokenizers.png! 
+!tokenizers.png!
 
 
 h2. Background Information
@@ -80,4 +80,3 @@ h2. Roadmap
 * Modifying the default settings of analyzers/tokenizers
 * Ad-hoc analyzer creation to test analyzers that have not been mapped yet
 * Visual query builder
-
