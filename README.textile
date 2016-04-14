@@ -17,7 +17,7 @@ h3. Installation
 
 To install Inquisitor onto your node, run <code>bin/plugin install polyfractal/elasticsearch-inquisitor</code>
 
-Inquisitor automatically connects to <code>localhost</code>, so it must be run on a node that is web-accessible.  To access Inquisitor, open <code>http://localhost:9200/_plugin/elasticsearch-inquisitor/</code>
+Inquisitor automatically connects to <code>localhost</code>, so it must be run on a node that is web-accessible.  To access Inquisitor, open <code>http://localhost:9200/_plugin/inquisitor/</code>
 
 
 h2. Features
