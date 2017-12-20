@@ -1,6 +1,25 @@
 angular.module('inquisitor.service', [])
     .value('Data', {
-        host: "http://localhost:9200",
+        host: (function () {
+            // Allow specifying the ES URL in the query string
+            try {
+                var searchParams = (new URL(location)).searchParams;
+                var url = searchParams.get("url");
+
+                if (null !== url) {
+                    return url;
+                }
+            } catch (e) {
+                // If there is no support for URL in this browser, skip support for the query string
+            }
+
+            // Use the ES host when running as a site plugin
+            if (location.href.indexOf("/_plugin/") !== -1) {
+                return location.protocol + "//" + location.host;
+            }
+
+            return "http://localhost:9200";
+        })(),
         query:'{"query" : {"match_all": {}}}',
         highlight: '"highlight":{"order" : "score", "pre_tags" : ["<span class=\'highlight\'>"],"post_tags" : ["</span>"],"fields":{',
         elasticResponse: "",
@@ -38,21 +57,21 @@ var app = angular.module('Inquisitor', ['inquisitor.service', 'ui.bootstrap', 'u
 app.factory('pubsub', function(){
   var cache = {};
   return {
-    publish: function(topic, args) { 
+    publish: function(topic, args) {
       cache[topic] && $.each(cache[topic], function() {
         this.call(null, args || []);
       });
     },
-    
+
     subscribe: function(topic, callback) {
       if(!cache[topic]) {
         cache[topic] = [];
       }
-      
+
       cache[topic].push(callback);
-      return [topic, callback]; 
+      return [topic, callback];
     },
-    
+
     unsubscribe: function(handle) {
       var t = handle[0];
       cache[t] && d.each(cache[t], function(idx){
